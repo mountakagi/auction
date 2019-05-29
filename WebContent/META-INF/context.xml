@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configurtion>
+<Context>
+	<Resource
+		name="mylink"
+		auth="Container"
+		type="javax.sql.DataSource"
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://127.0.0.1:3306/acution_db?useSSL=false"
+		username="root"
+		password="rootpass"
+	/>
+</Context>

@@ -1,0 +1,113 @@
+-- MySQL dump 10.13  Distrib 5.7.18, for Win64 (x86_64)
+--
+-- Host: localhost    Database: acution_db
+-- ------------------------------------------------------
+-- Server version	5.7.18-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `bids`
+--
+
+DROP TABLE IF EXISTS `bids`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bids` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `bid_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `goods_id` int(11) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bids`
+--
+
+LOCK TABLES `bids` WRITE;
+/*!40000 ALTER TABLE `bids` DISABLE KEYS */;
+INSERT INTO `bids` VALUES (2,29,5100,'2019-05-24 05:10:52',1),(3,29,1200,'2019-05-24 05:11:31',2),(4,35,4000,'2019-05-24 05:41:27',3),(5,29,110,'2019-05-27 01:46:45',5),(6,29,4900,'2019-05-27 01:50:35',3),(7,29,5000,'2019-05-27 01:51:20',3),(8,29,1400,'2019-05-27 01:57:18',2),(9,34,110,'2019-05-27 01:58:16',4),(10,29,210,'2019-05-27 02:31:05',5),(12,29,5100,'2019-05-27 02:32:02',3),(13,29,5200,'2019-05-27 02:33:40',3),(15,46,202,'2019-05-27 02:52:27',9),(16,46,302,'2019-05-27 02:54:51',9),(17,31,200,'2019-05-27 02:57:01',10),(18,46,402,'2019-05-27 03:12:14',9),(20,46,602,'2019-05-27 03:53:12',9),(21,29,300,'2019-05-27 03:53:56',6),(22,29,400,'2019-05-27 04:00:31',6),(23,34,1100,'2019-05-27 04:28:06',14),(24,29,200,'2019-05-27 04:31:29',15),(25,34,702,'2019-05-27 05:05:11',9),(26,29,500,'2019-05-27 05:12:02',6),(27,29,259,'2019-05-27 05:14:57',8),(28,29,359,'2019-05-27 05:15:14',8),(29,29,200,'2019-05-27 05:15:33',7),(30,29,200,'2019-05-27 05:41:05',17),(31,29,600,'2019-05-27 05:55:59',6),(32,29,700,'2019-05-27 05:56:25',6),(33,29,800,'2019-05-27 06:02:01',6),(34,29,459,'2019-05-27 06:08:54',8),(35,29,900,'2019-05-27 06:11:21',6),(36,29,300,'2019-05-27 06:12:33',7),(37,29,1000,'2019-05-27 06:13:09',6),(38,45,559,'2019-05-28 02:45:16',8),(39,29,660,'2019-05-28 03:45:40',8);
+/*!40000 ALTER TABLE `bids` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `goods`
+--
+
+DROP TABLE IF EXISTS `goods`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `goods` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(16) NOT NULL,
+  `category` varchar(16) NOT NULL,
+  `image_uri` varchar(100) NOT NULL DEFAULT '/auction/img/sample.png',
+  `price` int(11) NOT NULL DEFAULT '1',
+  `status` int(11) NOT NULL,
+  `owner_id` int(11) NOT NULL,
+  `description` text NOT NULL,
+  `deadtime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `purchase_owner` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `goods`
+--
+
+LOCK TABLES `goods` WRITE;
+/*!40000 ALTER TABLE `goods` DISABLE KEYS */;
+INSERT INTO `goods` VALUES (2,'コアラ','ペット','/auction/image/Koala.jpg',1000,1,31,'かわいい01','2019-05-25 04:00:00',NULL),(3,'ぴかちゅ','商品','/auction/image/n174.gif',100,3,45,'','2019-05-23 19:00:00',NULL),(4,'商品名','おしお','/auction/image/n174.gif',10,1,35,'おいしい','2019-05-18 10:00:00',NULL),(5,'商品名','おしお','/auction/image/n174.gif',10,1,35,'おいしい','2019-05-18 10:00:00',NULL),(6,'こうぺんちゃん','こうぺんちゃん','/auction/image/Penguins.jpg',100,1,34,'かわいい','2019-05-27 06:27:00',NULL),(7,'ああｇ','飲料','/auction/image/Jellyfish.jpg',100,1,34,'飲料','2019-05-30 00:13:00',NULL),(8,'暑い夏の日','飲料','/auction/image/たまごパン.jpg',159,1,34,'最高気温','2019-05-29 04:00:00',NULL),(9,'冬のソナタ','飲料','/auction/image/20190527114622041cacao70.png',102,3,29,'ドラマかも','2019-05-27 05:10:00',NULL),(10,'xeon','CPU','/auction/image/20190527114733480Hydrangeas.jpg',100,3,29,'秋葉原のガチャ','2019-05-27 03:00:00',NULL),(12,'trythtd','yhytdhyt','/auction/image/20190527130352082ban01.png',10000,1,29,'gjhtdyjytj','2019-05-27 05:25:00',NULL),(13,'celeron','飲料','/auction/image/20190527132136082Jellyfish.jpg',100,1,29,'fgfgfc','2019-05-24 04:30:00',NULL),(15,'gfhtfh','thgrstg','/auction/image/20190527132644463Lighthouse.jpg',100,1,31,'gtrsg','2019-05-27 04:45:00',NULL),(16,'あああ','飲料','/auction/image/20190527142302708Jellyfish.jpg',10100,1,37,'亜バラ骨v\r\n　','2019-05-27 05:00:00',NULL),(17,'いーやいいやいおー','飲料','/auction/image/20190527143418918Jellyfish.jpg',100,1,32,'うｊｙｆｊ','2019-05-27 05:50:00',NULL),(18,'ghtyhtyh','thtr','/auction/image/20190527144039906Penguins.jpg',124,1,31,'trhgter','2019-05-27 05:40:00',NULL);
+/*!40000 ALTER TABLE `goods` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(16) NOT NULL,
+  `pass_word` varchar(16) NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `user_name` (`user_name`),
+  UNIQUE KEY `user_name_2` (`user_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (29,'kamura','1234'),(30,'上尾原市','1234'),(31,'okegawa','1234'),(32,'kitamoto',''),(33,'',''),(34,'おお　おお','1234'),(35,'admin','admin'),(36,'sleppy','1234'),(37,'世界一のバリスタ','1234'),(39,'遠い彼方','1234'),(40,'yono','1234'),(43,'change','1'),(45,'saito','1234'),(46,'newuser','1234'),(47,'yjsample','1234'),(48,'190527','1234'),(49,'test1','test1');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2019-05-28 14:03:18
